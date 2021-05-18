@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<style>
+    button {
+        background-color: rgb(0, 183, 255);
+        border: 3px solid black;
+        color: black;
+        border-left: 0px;
+        font-size: 20px;
+        width: 60px;
+    }
+
+    input {
+        border: 3px solid black;
+        outline: none;
+        width: calc(90% - 60px);
+        max-width: 500px;
+        font-size: 20px;
+        padding: 10px;
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
+
+<script>
+    function myFunction() {
+        /* Get the text field */
+        var copyText = document.getElementById("myInput");
+
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText.value);
+    }
+</script>
+
+<h1 align='center'>{{note.name}}</h1>
+<hr><br>
+<div align='center'>
+    <div style="border-radius: 22px; border: 3px solid; width: 90%; padding: 10px;" align='center'>
+        {{note.code|safe}}
+    </div>
+</div>
+<br><br>
+<div style="display: flex; justify-content: center;">
+    <input readonly type="text" value="http://127.0.0.1:5000/{{note.user_id}}/{{note.id}}" id="myInput">
+    <button onclick="myFunction()">Copy</button>
+</div>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<style>
+    .input {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        border: none;
+        border-bottom: 3px solid #000000;
+        width: calc(100% - 62px);
+        outline: none;
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    .button {
+        border: none;
+        background-color: white;
+        padding: 0px;
+    }
+
+    .button-image {
+        margin: 0px;
+        height: 50px;
+        width: 50px;
+    }
+
+    form {
+        display: flex;
+        align-items: center;
+        width: 90%;
+    }
+
+    .ass {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: rgba(14, 196, 251, 0.781);
+        width: 3rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 3rem;
+    }
+
+    .notes{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .note{
+        color: black;
+        text-decoration: none;
+        border: 2px solid;
+        border-radius: 22px;
+        padding: 0px 30px;
+    }
+
+    .assno {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+<br><br><br>
+<div align='center'>
+    <form method="post" align='center'>
+        <input type="search" name="search" autocomplete="off" id="" class="input">
+        <button class="button" type="submit"><img class="button-image"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJg2Ph7EUmgOxVcDBaRjklnPYdtWaH9YL55A&usqp=CAU"
+                alt=""></button>
+    </form>
+</div>
+
+<div class="ass">
+    <h1 class="assno"><a class="assno" href="/new">+</a></h1>
+</div>
+<br><br>
+<h1 align='center'>{{results}}</h1>
+<br>
+<div class="notes">
+    {% for note in notes %}
+    <a href="/{{user.id}}/{{note.id}}">
+        <div class="note">
+            <h3>{{note.name}}</h3>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}
